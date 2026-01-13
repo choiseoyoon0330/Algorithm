@@ -14,8 +14,9 @@ queue = deque([x])
 while queue:
     now = queue.popleft()
     for node in graph[now]:
-        dist[node] = dist[now] + 1
-        queue.append(node)
+        if dist[node] == -1:
+            dist[node] = dist[now] + 1
+            queue.append(node)
 
 check = False
 for i in range(1, n + 1):
